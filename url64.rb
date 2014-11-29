@@ -15,10 +15,11 @@ module Sass::Script::Functions
         ext = File.extname(path)
 
         # optimize image
-        if ext == "gif" || ext == "jpg" || ext == "png"
+        if ext == ".gif" || ext == ".jpg" || ext == ".png"
             Smusher::optimize_image(absname)
-        elsif ext == "svg"
-            `python scour/scour.py -i ` + absname + ` -o ` + absname
+        elsif ext == ".svg"
+            # `python scour/scour.py -i ` + absname + ` -o ` + absname
+            ext = ext + "+xml"
         end
 
         # base64 encode the file
